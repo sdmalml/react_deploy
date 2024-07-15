@@ -1,25 +1,44 @@
-import logo from './logo.svg';
+import {useState} from "react";
 import './App.css';
 
+
 function App() {
+  const [todoList, setTodoList] = useState(["일찍 일어나기", "운동하기"]);
+
+  function Todo(props) {
+      return (
+          <li>
+              <input type="checkbox" />
+              <span>{props.content}</span>
+              <button className="del" >삭제</button>
+          </li>
+      )
+  }
+
+  function createTodo() {
+      const inpBox = document.getElementById('inpBox');
+      const content = inpBox.value;
+      setTodoList((cur) => [...cur, content]);
+      inpBox.value = '';
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div>
+          <h1>오늘 할 일은?</h1>
+          <div className="form">
+              <form action="#" className="ipt" onSubmit={createTodo}>
+                  <input className="ipt" id="inpBox" type="text" placeholder="할 일을 입력해주세요." />
+                  <button className="sub" id="subBtn">제출</button>
+              </form>
+          </div>
+          <div>
+              <ul>
+                  {todoList.map((content, index) => <Todo key={index} content={content} />)}
+              </ul>
+          </div>
+      </div >
+  )
 }
+
 
 export default App;
