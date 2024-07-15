@@ -19,10 +19,9 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-}
+
   },
-  "homepage": "https:/sdmalml
-/.github.io/react_deploy/",
+  "homepage": "https:/sdmalml/.github.io/react_deploy/",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -41,4 +40,5 @@
       "last 1 safari version"
     ]
   }
+}
 
